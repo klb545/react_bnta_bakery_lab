@@ -2,27 +2,39 @@ import { useState } from "react";
 
 const CakeForm = ({listOfCakes, setListOfCakes}) => {
 
-    // const cakeName = cakeInfo.cakeName;
-    // const cakePrice = cakeInfo.price;
-    // const cakeRating = cakeInfo.rating;
-    // const cakeIngredients = cakeInfo.ingredients.map( (ingredient, index) => <li key={index}>{ingredient}</li> );
-
     const [cakeNameEntry, setCakeName] = useState("");
     const [ingredientsEntry, setIngredients] = useState([]);
     const [priceEntry, setPrice] = useState(0);
     const [ratingEntry, setRating] = useState(0);
+    // const [error, setError] = useState("");
+
+    // const handleFormValidation = () => {
+    //     let errorMessage = "";
+    //     for(i = 0; i < listOfCakes.length; i++){
+    //         if (listOfCakes[i].name.includes(cakeNameEntry)) {
+    //         errorMessage = "Cake name already exists in list";
+    //     };
+    //     }
+    //     if (listOfCakes.includes(cakeNameEntry)) {
+    //         errorMessage = "Cake name already exists in list";
+    //     };
+    //     setError();
+    //     return errorMessage !== "";
+    // }
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        const updatedCakesList = [...listOfCakes];
-        const newCake = {
-            cakeName: cakeNameEntry,
-            ingredients: ingredientsEntry,
-            price: priceEntry,
-            rating: ratingEntry
-        }
-        updatedCakesList.push(newCake);
-        setListOfCakes(updatedCakesList);
+        // if(!handleFormValidation()){
+            const updatedCakesList = [...listOfCakes];
+            const newCake = {
+                cakeName: cakeNameEntry,
+                ingredients: ingredientsEntry,
+                price: priceEntry,
+                rating: ratingEntry
+            }
+            updatedCakesList.push(newCake);
+            setListOfCakes(updatedCakesList);
+        // }
     };
 
 
@@ -39,6 +51,7 @@ const CakeForm = ({listOfCakes, setListOfCakes}) => {
                 <input type="number" name="rating" placeholder="Rating" value={ratingEntry} onChange={(e)=> setRating(e.target.value)}/>
                 <input type="submit" value="Submit"/>
             </form>
+            {/* <p>{error}</p> */}
         </> 
     );
 

@@ -48,15 +48,12 @@ const CakeContainer = () => {
 		]		
 	)
 
+	const cakeList = listOfCakes.map( (cake, index) => <Cake key={index} cakeInfo={cake}/> );
+
   return (
     <>
 		<CakeForm listOfCakes={listOfCakes} setListOfCakes={setListOfCakes}/>
-		{/* <CakeForm cakeInfo={listOfCakes} setCakeInfo={}/> */}
-		<div>
-			{/* { listOfCakes.map( cake => <Cake key={cake} nameOfCake={cake.cakeName} ingredients={cake.ingredients} price={cake.price} rating={cake.rating} /> ) } */}
-
-			{ listOfCakes.map( cake => <Cake key={cake} cakeInfo={cake}/> ) }
-		</div>
+		{cakeList}
 	</>
   )
 }
